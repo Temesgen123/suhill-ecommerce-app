@@ -1,14 +1,11 @@
 {
-    "version" : 2,
-    "name" : "SUHILL PROJECT",
-    "builds" : [
-       { "src" : "./index.js",
-        "use" : "@vercel/node"}
-    ],
-    "routes" : [
-        {
-            "src" : "/(.*)",
-            "dest" : "/"
-        }
-    ]
+  "version": 2,
+  "name": "suhill project",
+  "builds": [{ "src": "./index.js", "use": "@vercel/node" }],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/"
+    }
+  ]
 }
