@@ -14,6 +14,7 @@ import { setUserDetails } from './store/userSlice';
 function App() {
   const dispatch = useDispatch();
   const [cartProductsCount, setCartProductsCount] = useState(0);
+
   const fetchUserDetails = async () => {
     const apiResponse = await fetch(SummaryApi.current_user.url, {
       method: SummaryApi.current_user.method,
@@ -23,24 +24,26 @@ function App() {
     if (apiData.success) {
       dispatch(setUserDetails(apiData.data));
     }
-  };  
+  };
   const fetchUserCartItemsCount = async () => {
     const apiResponse = await fetch(SummaryApi.addToCartProductCount.url, {
       method: SummaryApi.addToCartProductCount.method,
       credentials: 'include',
     });
     const apiData = await apiResponse.json();
-    setCartProductsCount(()=>apiData?.data?.count);
+    setCartProductsCount(() => apiData?.data?.count);
   };
 
   useEffect(() => {
-    fetchUserDetails();   
+    fetchUserDetails();
     fetchUserCartItemsCount();
   }, [cartProductsCount]);
   return (
     <>
-      <Context.Provider value={{ fetchUserDetails, cartProductsCount, fetchUserCartItemsCount }}>
-        <ToastContainer position='top-center'/>
+      <Context.Provider
+        value={{ fetchUserDetails, cartProductsCount, fetchUserCartItemsCount }}
+      >
+        <ToastContainer position="top-center" />
         <Header />
         <main className="min-h-[calc(100vh-80px)] mx-auto pt-16">
           <Outlet />

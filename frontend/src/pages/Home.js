@@ -6,7 +6,7 @@ import VerticalProductCard from '../components/VerticalProductCard';
 
 const Home = () => {
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-4 bg-red-600">
       <CategoryList />
       <ProductBanner />
       <HorizontalProductCard category={'laptops'} heading={'Top Laptops'} />
