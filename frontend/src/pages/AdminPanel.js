@@ -8,8 +8,8 @@ import ROLE from '../common/role';
 const AdminPanel = () => {
   const user = useSelector((state) => state?.user?.user);
   const navigate = useNavigate();
-  useEffect(()=>{
-    if(user?.role !== ROLE.ADMIN){
+  useEffect(() => {
+    if (user?.role !== ROLE.ADMIN) {
       navigate('/');
     }
   }, [user]);
@@ -28,16 +28,30 @@ const AdminPanel = () => {
               <FaRegUserCircle />
             )}
           </div>
-          {user?.username && <p className="capitalize font-semibold text-lg">{` ${user?.username}`}</p>}
+          {user?.username && (
+            <p className="capitalize font-semibold text-lg">{` ${user?.username}`}</p>
+          )}
           {user?.role && <p className="text-xs">{`Role : ${user?.role}`}</p>}
         </div>
         <div>
           <nav className="grid p-5">
-            <Link to={'all-users'} className="px-2 py-1  hover:bg-slate-100 hover:text-blue-900">
+            <Link
+              to={'all-users'}
+              className="px-2 py-1  hover:bg-slate-100 hover:text-blue-900"
+            >
               All users
             </Link>
-            <Link to={'all-products'} className="px-2 py-1 hover:bg-slate-100 hover:text-blue-900">
+            <Link
+              to={'all-products'}
+              className="px-2 py-1 hover:bg-slate-100 hover:text-blue-900"
+            >
               All Products
+            </Link>
+            <Link
+              to={'all-orders'}
+              className="px-2 py-1  hover:bg-slate-100 hover:text-blue-900"
+            >
+              All Orders
             </Link>
           </nav>
         </div>
