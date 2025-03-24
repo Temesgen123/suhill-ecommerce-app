@@ -139,7 +139,7 @@ const Cart = () => {
                   </div>
                 );
               })
-            : data.map((cartProduct, index) => {
+            : data?.map((cartProduct, index) => {
                 return (
                   <div
                     key={cartProduct?._id + 'Add to cart loading'}
@@ -171,7 +171,7 @@ const Cart = () => {
                       <div className="flex justify-between items-center">
                         <p className="text-red-600 text-md font-medium">
                           Price : $
-                          {(cartProduct?.productId?.sellingPrice).toFixed(2)}
+                          {(cartProduct?.productId?.sellingPrice)?.toFixed(2)}
                         </p>
                         <p className="text-slate-600 text-md font-semibold">
                           Subtotal Price : $
