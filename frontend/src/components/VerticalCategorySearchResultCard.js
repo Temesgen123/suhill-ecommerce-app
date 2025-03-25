@@ -13,7 +13,7 @@ function VerticalCategorySearchResultCard({ loading, data = [] }) {
   };
   return (
       <div className=" grid md:grid-cols-[repeat(auto-fit,minmax(220px,280px))]
-     grid-cols-[repeat(auto-fit,minmax(120px,180px))] justify-center md:justify-between gap-3  md:gap-5 overflow-visible md:overflow-scroll scrollbar-none transition-all">
+     grid-cols-[repeat(auto-fit,minmax(120px,180px))] justify-center md:justify-between gap-3  md:gap-5 overflow-visible md:overflow-scroll scrollbar-none transition-all ">
       {loading
         ? loadingList.map((product, index) => {
             return (
@@ -47,7 +47,7 @@ function VerticalCategorySearchResultCard({ loading, data = [] }) {
               <Link
                 to={'/product/' + product?._id}
                 key={index + product?.productName + product?._id}
-                className="w-full min-w-[280px] md:min-w-[300px]   max-w-[400px] md:max-w-[300px] md:h-36 h-28  rounded-sm shadow flex  "
+                className="w-full min-w-[280px] md:min-w-[300px]   max-w-[400px] md:max-w-[300px] md:h-36 h-32  rounded-sm shadow flex  "
               >
                 <div className="bg-slate-200 h-full p-4 min-w-[100px] md:min-w-[125px] 
                 max-w-[105px] md:max-w-[145px]">

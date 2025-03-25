@@ -47,7 +47,7 @@ function VerticalSearchResultCard({ loading, data = [] }) {
               <Link
                 to={'/product/' + product?._id}
                 key={index + product?.productName + product?._id}
-                className="w-full min-w-[280px] md:min-w-[300px]   max-w-[280px] md:max-w-[300px] h-36 bg-white rounded-sm shadow flex"
+                className="w-full min-w-[280px] md:min-w-[300px]   max-w-[280px] md:max-w-[300px] h-36 bg-white rounded-sm shadow flex "
               >
                 <div className="bg-slate-200 h-full p-4 min-w-[120px] md:min-w-[145px]
                 max-w-[125px] md:max-w-[165px]">

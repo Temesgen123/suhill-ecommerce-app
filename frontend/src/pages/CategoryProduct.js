@@ -90,17 +90,17 @@ function CategoryProduct() {
     <div className="container mx-auto p-4 pt-12">
       {/* Desktop version */}
       <button
-        className="cursor-pointer rounded  my-2 mt-5 md:mt-0"
+        className="cursor-pointer rounded  my-2 mt-5 md:mt-5 "
         onClick={() => {
           handleOpenSidebar();
         }}
       >
         {!openSidebar ? (
-          <div className="text-blue-900 bg-slate-300 w-48 text-lg font-semibold rounded-xl hover:bg-slate-100">
+          <div className="text-blue-900 bg-slate-300 w-40 md:w-48 text-sm md:text-lg font-semibold rounded-xl hover:bg-slate-100">
             <span className="">SELECT CATEGORY</span>
           </div>
         ) : (
-          <div className="w-48 text-lg font-bold flex justify-end bg-slate-300 hover:bg-slate-100">
+          <div className="w-40 md:w-48 text-lg font-bold flex justify-end bg-slate-300 hover:bg-slate-100">
             <span className="bg-red-600 hover:bg-white hover:text-red-600 text-white  rounded block w-8">
               X
             </span>
@@ -110,7 +110,7 @@ function CategoryProduct() {
       {openSidebar ? (
         <div className=" md:grid md:grid-cols-[200px,1fr] flex ">
           {/* left side */}
-          <div className="bg-white mt-16 md:mt-12 md:block p-2 min-h-[calc(100vh-120px)] overflow-y-scroll">
+          <div className="bg-white mt-8 md:mt-3 md:block p-2 min-h-[calc(100vh-120px)] overflow-y-scroll">
             {/* Sort by */}
             <div className="">
               <h3 className="text-base uppercase font-medium text-slate-500 border-b  border-slate-300 pb-1">
@@ -170,12 +170,12 @@ function CategoryProduct() {
           </div>
           {/* right side */}
           <div className="w-full px-5 py-1">
-            <p className="py-2 text-xl font-semibold">
+            <p className="py-2 text-sm md:text-xl font-semibold">
               <span className="mx-2">Search Result :</span>
               {data.length}
               <span className="mx-1">items</span>
             </p>
-            <div className="min-h-[calc(100vh-120px)] max-h-[calc(100vh-120px)] overflow-y-scroll scrollbar-none">
+            <div className="min-h-[calc(100vh-120px)] max-h-[calc(100vh-120px)] overflow-y-scroll scrollbar-none p-10">
               {data.length !== 0 && (
                 <VerticalCategorySearchResultCard
                   data={data}
@@ -254,7 +254,7 @@ function CategoryProduct() {
               {data.length}
               <span className="mx-1">items</span>
             </p>
-            <div className="min-h-[calc(100vh-120px)] max-h-[calc(100vh-120px)] overflow-y-scroll flex flex-col items-start md:grid scrollbar-none">
+            <div className="min-h-[calc(100vh-120px)] max-h-[calc(100vh-120px)] overflow-y-scroll flex flex-col items-start md:grid scrollbar-none p-10">
               {data.length !== 0 && (
                 <VerticalCategorySearchResultCard
                   data={data}
