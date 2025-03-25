@@ -90,12 +90,12 @@ function CategoryProduct() {
     <div className="container mx-auto p-4 pt-12">
       {/* Desktop version */}
       <button
-        className="px-5 bg-blue-200 cursor-pointer rounded-2xl  my-2 w-48 hover:bg-red-200"
+        className="cursor-pointer rounded  my-2 "
         onClick={() => {
           handleOpenSidebar();
         }}
       >
-        {!openSidebar ? (<span>SELECT CATEGORY</span>):(<span>CLOSE MENU</span>)}
+        {!openSidebar ? ( <div className='text-blue-900 bg-slate-300 w-48 text-lg font-semibold rounded hover:bg-slate-100'><span>SELECT CATEGORY</span></div>):( <div className='w-48 text-lg font-bold flex justify-end bg-slate-300 hover:bg-slate-100'><span className='bg-red-600 hover:bg-white hover:text-red-600 text-white  rounded block w-8'>X</span></div>)}
         
       </button>
       {openSidebar ? (
@@ -160,13 +160,13 @@ function CategoryProduct() {
             </div>
           </div>
           {/* right side */}
-          <div className="w-full ">
+          <div className="w-full px-5 py-1">
             <p className="py-2 text-xl font-semibold">
               <span className="mx-2">Search Result :</span>
               {data.length}
               <span className="mx-1">items</span>
             </p>
-            <div className="min-h-[calc(100vh-120px)] max-h-[calc(100vh-120px)] overflow-y-scroll">
+            <div className="min-h-[calc(100vh-120px)] max-h-[calc(100vh-120px)] overflow-y-scroll scrollbar-none">
               {data.length !== 0 && (
                 <VerticalCategorySearchResultCard
                   data={data}
@@ -239,13 +239,13 @@ function CategoryProduct() {
           </div>
 
           {/* right side */}
-          <div className="w-full">
+          <div className="w-full px-5 py-1">
             <p className="py-2 text-xl font-semibold">
               <span className="mx-2">Search Result :</span>
               {data.length}
               <span className="mx-1">items</span>
             </p>
-            <div className="min-h-[calc(100vh-120px)] max-h-[calc(100vh-120px)] overflow-y-scroll flex flex-col items-start md:grid">
+            <div className="min-h-[calc(100vh-120px)] max-h-[calc(100vh-120px)] overflow-y-scroll flex flex-col items-start md:grid scrollbar-none">
               {data.length !== 0 && (
                 <VerticalCategorySearchResultCard
                   data={data}

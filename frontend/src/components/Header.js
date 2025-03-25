@@ -63,7 +63,7 @@ const Header = () => {
   }, [cartProductsCount]);
 
   return (
-    <header className=" md:h-24 h-28 shadow-md fixed w-full z-40 px-5 md:px-0 mx-auto ">
+    <header className=" md:h-24 h-28 shadow-md fixed w-full z-40 px-5 md:px-0 mx-auto">
       <div className="mx-auto md:px-4 md:p-3 px-1 ">
         <div className="mx-auto md:px-4 py-2 h-full  flex justify-between items-center ">
           <div className="md:px-2">
@@ -82,7 +82,7 @@ const Header = () => {
             <input
               type="text"
               placeholder="Search product here ..."
-              className="w-full outline-none "
+              className="w-full outline-none h-8 px-5"
               onChange={handleSearch}
               value={search}
             />
