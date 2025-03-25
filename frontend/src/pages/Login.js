@@ -15,7 +15,7 @@ const Login = () => {
     email: '',
     password: '',
   });
-  
+
   const navigate = useNavigate();
   const { fetchUserDetails, fetchUserCartItemsCount } = useContext(Context);
   const handleOnChange = (e) => {
@@ -41,8 +41,8 @@ const Login = () => {
     const apiResponse = await responseData.json();
     if (apiResponse.success) {
       toast.success(apiResponse.message);
-      fetchUserDetails();
-      fetchUserCartItemsCount();
+      await fetchUserDetails();
+      await fetchUserCartItemsCount();
       navigate('/');
     }
     if (apiResponse.error) {
