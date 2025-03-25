@@ -78,11 +78,11 @@ const Header = () => {
               <p className="text-blue-800 md:text-xl text-lg font-bold">SUHILL</p>
             </Link>
           </div>
-          <div className="hidden md:flex items-center w-full justify-between max-w-sm border focus-within:shadow-md pl-5 rounded-full">
+          <div className="hidden md:flex items-center w-full justify-between max-w-md border focus-within:shadow-md pl-5 rounded-full bg-transparent hover:border-1 hover:border-blue-700">
             <input
               type="text"
               placeholder="Search product here ..."
-              className="w-full outline-none h-8 px-5"
+              className="w-full outline-none h-8 px-5 bg-transparent"
               onChange={handleSearch}
               value={search}
             />
@@ -162,7 +162,8 @@ const Header = () => {
               ) : (
                 <Link
                   to="login"
-                  className="bg-blue-900 text-white md:px-4 md:py-1  px-1  rounded-full hover:bg-slate-100 hover:text-blue-900  hover:border-2 border-blue-900 flex items-center "
+                    className="bg-blue-900 text-white md:px-5 md:py-1 px-2  rounded-full hover:bg-slate-100 hover:text-blue-900  hover:border-2 border-blue-900 
+                   "
                 >
                   Login
                 </Link>

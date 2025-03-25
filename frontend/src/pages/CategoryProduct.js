@@ -96,11 +96,11 @@ function CategoryProduct() {
         }}
       >
         {!openSidebar ? (
-          <div className="text-blue-900 bg-slate-300 w-40 md:w-48 text-sm md:text-lg font-semibold rounded-xl hover:bg-slate-100">
+          <div className="text-white bg-blue-900 w-40 md:w-48 text-sm md:text-lg rounded-xl hover:bg-slate-300 p-1 hover:text-red-600">
             <span className="">SELECT CATEGORY</span>
           </div>
         ) : (
-          <div className="w-48 md:w-48 text-lg font-bold flex justify-end bg-slate-300 hover:bg-slate-100">
+          <div className="w-48 md:w-48 text-lg font-bold flex justify-end bg-slate-200 hover:bg-red-600 p-1">
             <span className="bg-red-600 hover:bg-white hover:text-red-600 text-white  rounded block w-8">
               X
             </span>
@@ -110,7 +110,7 @@ function CategoryProduct() {
       {openSidebar ? (
         <div className=" md:grid md:grid-cols-[200px,1fr] flex ">
           {/* left side */}
-          <div className="bg-white mt-4 md:block p-2 min-h-[calc(100vh-120px)] overflow-y-scroll">
+          <div className="bg-white mt-1 md:block p-2 min-h-[calc(100vh-120px)] overflow-y-scroll">
             {/* Sort by */}
             <div className="">
               <h3 className="text-base uppercase font-medium text-slate-500 border-b  border-slate-300 pb-1">
