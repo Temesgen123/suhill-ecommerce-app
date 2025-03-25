@@ -90,13 +90,22 @@ function CategoryProduct() {
     <div className="container mx-auto p-4 pt-12">
       {/* Desktop version */}
       <button
-        className="cursor-pointer rounded  my-2 "
+        className="cursor-pointer rounded  my-2 mt-5 md:mt-0"
         onClick={() => {
           handleOpenSidebar();
         }}
       >
-        {!openSidebar ? ( <div className='text-blue-900 bg-slate-300 w-48 text-lg font-semibold rounded hover:bg-slate-100'><span>SELECT CATEGORY</span></div>):( <div className='w-48 text-lg font-bold flex justify-end bg-slate-300 hover:bg-slate-100'><span className='bg-red-600 hover:bg-white hover:text-red-600 text-white  rounded block w-8'>X</span></div>)}
-        
+        {!openSidebar ? (
+          <div className="text-blue-900 bg-slate-300 w-48 text-lg font-semibold rounded-xl hover:bg-slate-100">
+            <span className="">SELECT CATEGORY</span>
+          </div>
+        ) : (
+          <div className="w-48 text-lg font-bold flex justify-end bg-slate-300 hover:bg-slate-100">
+            <span className="bg-red-600 hover:bg-white hover:text-red-600 text-white  rounded block w-8">
+              X
+            </span>
+          </div>
+        )}
       </button>
       {openSidebar ? (
         <div className=" md:grid md:grid-cols-[200px,1fr] flex ">
@@ -239,8 +248,8 @@ function CategoryProduct() {
           </div>
 
           {/* right side */}
-          <div className="w-full px-5 py-1">
-            <p className="py-2 text-xl font-semibold">
+          <div className="w-full px-5 py-1 ">
+            <p className="py-1 text-xl font-semibold">
               <span className="mx-2">Search Result :</span>
               {data.length}
               <span className="mx-1">items</span>
