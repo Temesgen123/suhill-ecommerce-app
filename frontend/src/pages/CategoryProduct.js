@@ -169,13 +169,13 @@ function CategoryProduct() {
             </div>
           </div>
           {/* right side */}
-          <div className="w-full px-5 py-1 bg-violet-700">
+          <div className="w-full px-5 py-1 ">
             <p className="py-2 text-sm md:text-xl font-semibold">
               <span className="mx-2">Search Result :</span>
               {data.length}
               <span className="mx-1">items</span>
             </p>
-            <div className="min-h-[calc(100vh-120px)] max-h-[calc(100vh-120px)] overflow-y-scroll scrollbar-none px-10 bg-red-700">
+            <div className="min-h-[calc(100vh-120px)] max-h-[calc(100vh-120px)] overflow-y-scroll scrollbar-none px-10">
               {data.length !== 0 && (
                 <VerticalCategorySearchResultCard
                   data={data}
@@ -254,7 +254,7 @@ function CategoryProduct() {
               {data.length}
               <span className="mx-1">items</span>
             </p>
-            <div className="min-h-[calc(100vh-120px)] max-h-[calc(100vh-120px)] overflow-y-scroll flex flex-col items-start md:grid scrollbar-none p-10">
+            <div className="min-h-[calc(100vh-120px)] max-h-[calc(100vh-120px)] overflow-y-scroll flex flex-col items-start md:grid scrollbar-none px-10">
               {data.length !== 0 && (
                 <VerticalCategorySearchResultCard
                   data={data}
