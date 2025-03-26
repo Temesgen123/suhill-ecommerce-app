@@ -120,7 +120,7 @@ const Cart = () => {
 
   return (
     <div className="container mx-auto md:my-12 my-14 md:p-2">
-      <p className='text-xl font-semibold px-2'>Cart Items List</p>
+      <p className="text-xl font-semibold px-2">Cart Items List</p>
       <div className="text-center my-2 text-lg">
         {data?.length === 0 && !loading && (
           <p className="bg-white py-5">No Data</p>
@@ -128,7 +128,7 @@ const Cart = () => {
       </div>
       <div className="flex flex-col lg:flex-row gap-10 lg:justify-between ">
         {/* View Cart */}
-        <div className="w-full max-w-3xl mx-5 ">
+        <div className="w-full ">
           {loading
             ? loadingCart.map((element) => {
                 return (
@@ -144,38 +144,38 @@ const Cart = () => {
                 return (
                   <div
                     key={cartProduct?._id + 'Add to cart loading'}
-                    className="w-full bg-white h-40 md:h-32 my-2 border border-slate-300 rounded grid grid-cols-[128px,1fr]"
+                    className="w-full bg-white h-40 md:h-36 my-2 border border-slate-300 rounded grid grid-cols-[128px,1fr]  "
                   >
-                    <div className="w-32 h-32 bg-slate-200">
+                    <div className=" w-40 h-40 md:w-36 md:h-36 bg-slate-200">
                       <img
                         src={cartProduct?.productId?.productImage[0]}
                         alt=""
-                        className="w-full h-full object-scale-down mix-blend-multiply "
+                        className="w-full h-full object-scale-down mix-blend-multiply bg-transparent "
                       />
                     </div>
-                    <div className="px-4 py-2 relative ">
+                    <div className="md:px-12 px-2 py-3 relative  ">
                       {/* delete product */}
                       <div
-                        className="absolute right-0 text-red-600 text-lg rounded-full p-2 hover:bg-red-600 hover:text-white cursor-pointer "
+                        className="absolute md:right-5 right-1 text-red-600 text-lg rounded-full p-2 hover:bg-red-600 hover:text-white cursor-pointer "
                         onClick={() => {
                           deleteCartProduct(cartProduct?._id);
                         }}
                       >
                         <MdDelete />
                       </div>
-                      <h2 className="text-lg lg:text-xl text-ellipsis line-clamp-1">
+                      <h2 className="text-lg lg:text-xl text-ellipsis line-clamp-1 max-w-[80%]">
                         {cartProduct?.productId?.productName}
                       </h2>
                       <p className="capitalize text-slate-500">
                         {cartProduct?.productId?.category}
                       </p>
-                      <div className="flex justify-between items-center">
-                        <p className="text-red-600 text-md font-medium">
+                      <div className="flex flex-col md:flex-row md:justify-between  items-end md:items-center  p-2 md:p-1">
+                        <p className="text-red-600 text-sm md:text-lg font-medium">
                           Price : $
-                          {(cartProduct?.productId?.sellingPrice)?.toFixed(2)}
+                          {cartProduct?.productId?.sellingPrice?.toFixed(2)}
                         </p>
-                        <p className="text-slate-600 text-md font-semibold">
-                          Subtotal Price : $
+                        <p className="text-slate-600 text-sm md:text-lg font-semibold">
+                          Subtotal : $
                           {(
                             cartProduct?.productId?.sellingPrice *
                             cartProduct?.quantity
@@ -227,14 +227,14 @@ const Cart = () => {
                     ${totalPrice.toFixed(2)}
                   </p>
                 </div>
-                  <div className='flex justify-center mt-2 ' >
+                <div className="flex justify-center mt-2 ">
                   <button
-                  className="bg-blue-800 text-white px-2 py-1  hover:bg-blue-700 w-[50%] transition-all  rounded-full"
-                  onClick={handlePayment}
-                >
-                  Pay
-                </button>
-              </div>
+                    className="bg-blue-800 text-white px-2 py-1  hover:bg-blue-700 w-[50%] transition-all  rounded-full"
+                    onClick={handlePayment}
+                  >
+                    Pay
+                  </button>
+                </div>
               </div>
             )}
           </div>
