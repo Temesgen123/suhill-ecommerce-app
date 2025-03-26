@@ -28,6 +28,7 @@ const Home = () => {
         category={'televisions'}
         heading={'Top Televisions'}
       />
+      <HorizontalProductCard category={'earphones'} heading={'Top Earphones'} />
     </div>
   );
 };
