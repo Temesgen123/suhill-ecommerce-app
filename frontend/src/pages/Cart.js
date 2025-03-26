@@ -119,7 +119,7 @@ const Cart = () => {
   );
 
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto my-12 p-3">
       <div className="text-center my-3 text-lg">
         {data?.length === 0 && !loading && (
           <p className="bg-white py-5">No Data</p>
@@ -143,7 +143,7 @@ const Cart = () => {
                 return (
                   <div
                     key={cartProduct?._id + 'Add to cart loading'}
-                    className="w-full bg-white h-32 my-2 border border-slate-300 rounded grid grid-cols-[128px,1fr]"
+                    className="w-full bg-white h-40 md:h-32 my-2 border border-slate-300 rounded grid grid-cols-[128px,1fr]"
                   >
                     <div className="w-32 h-32 bg-slate-200">
                       <img
@@ -214,7 +214,7 @@ const Cart = () => {
                 Total
               </div>
             ) : (
-              <div className="h-36 bg-white border border-slate-300">
+              <div className="h-36 bg-white border border-slate-300 p-5 md:p-0">
                 <h2 className="text-white bg-blue-900 px-5 py-2">Summary</h2>
                 <div className="flex justify-between items-center px-5 py-1 gap-2">
                   <p>Quantity :</p>
