@@ -96,11 +96,11 @@ function CategoryProduct() {
         }}
       >
         {!openSidebar ? (
-          <div className="text-white bg-blue-900 w-40 md:w-48 text-sm md:text-lg rounded-xl hover:bg-slate-300 p-1 hover:text-red-600">
+          <div className="text-white bg-blue-900 w-40 md:w-48 text-sm md:text-md rounded-md hover:bg-red-600  hover:text-white">
             <span className="">SELECT CATEGORY</span>
           </div>
         ) : (
-          <div className="w-48 md:w-48 text-lg font-bold flex justify-end bg-slate-200 hover:bg-red-600 p-1">
+          <div className="w-48 md:w-48 text-sm  font-bold flex justify-end bg-slate-200 hover:bg-red-600">
             <span className="bg-red-600 hover:bg-white hover:text-red-600 text-white  rounded block w-8">
               X
             </span>
@@ -169,13 +169,13 @@ function CategoryProduct() {
             </div>
           </div>
           {/* right side */}
-          <div className="w-full px-5 py-1">
+          <div className="w-full px-5 py-1 bg-violet-700">
             <p className="py-2 text-sm md:text-xl font-semibold">
               <span className="mx-2">Search Result :</span>
               {data.length}
               <span className="mx-1">items</span>
             </p>
-            <div className="min-h-[calc(100vh-120px)] max-h-[calc(100vh-120px)] overflow-y-scroll scrollbar-none p-10">
+            <div className="min-h-[calc(100vh-120px)] max-h-[calc(100vh-120px)] overflow-y-scroll scrollbar-none px-10 bg-red-700">
               {data.length !== 0 && (
                 <VerticalCategorySearchResultCard
                   data={data}
