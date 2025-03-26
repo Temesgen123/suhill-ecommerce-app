@@ -119,8 +119,9 @@ const Cart = () => {
   );
 
   return (
-    <div className="container mx-auto my-12 p-3">
-      <div className="text-center my-3 text-lg">
+    <div className="container mx-auto md:my-12 my-14 md:p-2">
+      <p className='text-xl font-semibold px-2'>Cart Items List</p>
+      <div className="text-center my-2 text-lg">
         {data?.length === 0 && !loading && (
           <p className="bg-white py-5">No Data</p>
         )}
@@ -214,7 +215,7 @@ const Cart = () => {
                 Total
               </div>
             ) : (
-              <div className="h-36 bg-white border border-slate-300 p-5 md:p-0">
+              <div className=" h-44 md:h-40 bg-white border border-slate-300 p-5 md:p-0 ">
                 <h2 className="text-white bg-blue-900 px-5 py-2">Summary</h2>
                 <div className="flex justify-between items-center px-5 py-1 gap-2">
                   <p>Quantity :</p>
@@ -226,12 +227,14 @@ const Cart = () => {
                     ${totalPrice.toFixed(2)}
                   </p>
                 </div>
-                <button
-                  className="bg-blue-800 text-white px-2 py-1 rounded hover:bg-blue-700 w-full transition-all"
+                  <div className='flex justify-center mt-2 ' >
+                  <button
+                  className="bg-blue-800 text-white px-2 py-1  hover:bg-blue-700 w-[50%] transition-all  rounded-full"
                   onClick={handlePayment}
                 >
-                  Payment
+                  Pay
                 </button>
+              </div>
               </div>
             )}
           </div>
