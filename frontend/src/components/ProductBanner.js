@@ -7,7 +7,7 @@ import image3 from '../asset/banner/banner-medium03.png';
 import image4 from '../asset/banner/banner-medium04.png';
 import image5 from '../asset/banner/banner-medium05.png';
 
-import image1Mobile from '../asset/banner/banner-small01.png';
+import image1Mobile from '../asset/banner/banner-mobile01.png';
 import image2Mobile from '../asset/banner/banner-small02.png';
 import image3Mobile from '../asset/banner/banner-small03.png';
 import image4Mobile from '../asset/banner/banner-small04.png';
