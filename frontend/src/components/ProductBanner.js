@@ -11,7 +11,7 @@ import image1Mobile from '../asset/banner/banner-mobile01.png';
 import image2Mobile from '../asset/banner/banner-mobile02.png';
 import image3Mobile from '../asset/banner/banner-mobile03.png';
 import image4Mobile from '../asset/banner/banner-small04.png';
-import image5Mobile from '../asset/banner/banner-small05.png';
+import image5Mobile from '../asset/banner/banner-mobile05.png';
 
 import { FaAngleRight } from 'react-icons/fa6';
 import { FaAngleLeft } from 'react-icons/fa6';
