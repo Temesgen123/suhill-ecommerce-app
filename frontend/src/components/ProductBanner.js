@@ -1,11 +1,6 @@
 //Product Banner
 
 import React, { useEffect, useState } from 'react';
-// import image1 from '../asset/banner/img1.webp';
-// import image2 from '../asset/banner/img2.webp';
-// import image3 from '../asset/banner/img3.jpg';
-// import image4 from '../asset/banner/img4.jpg';
-// import image5 from '../asset/banner/img5.webp';
 
 import image1 from '../asset/banner/banner-medium01.png';
 import image2 from '../asset/banner/banner-medium02.png';
@@ -13,11 +8,6 @@ import image3 from '../asset/banner/banner-medium03.png';
 import image4 from '../asset/banner/banner-medium04.png';
 import image5 from '../asset/banner/banner-medium05.png';
 
-// import image1Mobile from '../asset/banner/img1_mobile.jpg';
-// import image2Mobile from '../asset/banner/img2_mobile.webp';
-// import image3Mobile from '../asset/banner/img3_mobile.jpg';
-// import image4Mobile from '../asset/banner/img4_mobile.jpg';
-// import image5Mobile from '../asset/banner/img5_mobile.png';
 
 import image1Mobile from '../asset/banner/banner-small01.png';
 import image2Mobile from '../asset/banner/banner-small02.png';
