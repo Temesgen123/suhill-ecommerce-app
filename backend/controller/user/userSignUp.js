@@ -1,5 +1,5 @@
 const userModel = require('../../models/userModel');
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 
 async function userSignUpController(req, res) {
   try {
@@ -17,24 +17,23 @@ async function userSignUpController(req, res) {
     if (!password) {
       throw new Error('Please enter your password');
     }
-    const salt = bcrypt.genSaltSync(10);
-    const hashPassword = bcrypt.hashSync(password, salt);
-    if (!hashPassword) {
-      throw new Error('Something went wrong while trying to encrypt password.');
-    }
-    const payload = {
+    // const salt = bcrypt.genSaltSync(10);
+    bcrypt.hash(password, 10).then((hash) => { const payload = {
       ...req.body,
       role: 'GENERAL',
-      password: hashPassword,
+      password: hash,
     };
     const userData = new userModel(payload);
-    const savedUser = await userData.save();
+    const savedUser = userData.save();
     res.status(201).json({
       data: savedUser,
       success: true,
       error: false,
       message: 'User created successfully.',
     });
+    }).catch((err) => {
+       throw new Error('Something went wrong while trying to encrypt password.');      
+    });       
   } catch (err) {
     res.json({
       message: err.message || err,

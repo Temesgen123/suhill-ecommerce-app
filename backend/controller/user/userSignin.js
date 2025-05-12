@@ -15,7 +15,7 @@ async function userSignInController(req, res) {
     if (!user) {
       throw new Error('User not found.');
     }
-    const checkedPassword = bcrypt.compare(password, user.password);
+    const checkedPassword = await bcrypt.compare(password, user.password);
     if (checkedPassword) {
       const tokenData = { _id: user._id, email: user.email };
       const token = jwt.sign(tokenData, process.env.TOKEN_SECRET_KEY, {
@@ -24,7 +24,7 @@ async function userSignInController(req, res) {
       const tokenOption = {
         httpOnly: true,
         secure: true,
-        sameSite : 'None'
+        sameSite: 'None',
       };
       res.cookie('token', token, tokenOption).json({
         message: 'Logged in successfully.',
@@ -33,7 +33,7 @@ async function userSignInController(req, res) {
         error: false,
       });
     } else {
-      throw new Error('Check password.');
+      throw new Error('Wrong password. Try again.');
     }
   } catch (err) {
     res.json({
