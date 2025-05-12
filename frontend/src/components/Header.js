@@ -2,7 +2,6 @@
 
 import React, { useContext, useEffect, useState } from 'react';
 import logo from '../logo.png';
-// import suhilllogo2 from '../suhilllogo2.png'
 import { GrSearch } from 'react-icons/gr';
 import { FaRegUserCircle } from 'react-icons/fa';
 import { FaShoppingCart } from 'react-icons/fa';
@@ -75,7 +74,9 @@ const Header = () => {
               }}
             >
               <img src={logo} alt="logo" className="rounded-full md:h-10 h-8" />
-              <p className="text-blue-800 md:text-xl text-lg font-bold">SUHILL</p>
+              <p className="text-blue-800 md:text-xl text-lg font-bold">
+                SUHILL
+              </p>
             </Link>
           </div>
           <div className="hidden md:flex items-center w-full justify-between max-w-md border focus-within:shadow-md pl-5 rounded-full bg-transparent hover:border-1 hover:border-blue-700">
@@ -90,7 +91,7 @@ const Header = () => {
               <GrSearch />
             </div>
           </div>
-          <div className="flex items-center md:gap-7 gap-2">
+          <div className="flex items-center md:gap-7 gap-2 bg-red-500">
             <div
               className="relative flex justify-center"
               onClick={() => setMenuDisplay((prev) => !prev)}
@@ -162,7 +163,7 @@ const Header = () => {
               ) : (
                 <Link
                   to="login"
-                    className="bg-blue-900 text-white md:px-5 md:py-1 px-2  rounded-full hover:bg-slate-100 hover:text-blue-900  hover:border-2 border-blue-900 
+                  className="bg-blue-900 text-white md:px-5 md:py-1 px-2  rounded-full hover:bg-slate-100 hover:text-blue-900  hover:border-2 border-blue-900 
                    "
                 >
                   Login
@@ -173,7 +174,6 @@ const Header = () => {
         </div>
         <div className="md:hidden items-center w-full border focus-within:shadow-md pl-5 rounded-full flex my-3 text-blue-900 bg-white mx-auto justify-center">
           <div className="flex rounded-full w-full">
-           
             <input
               type="text "
               placeholder="Search product here ..."
@@ -181,7 +181,7 @@ const Header = () => {
               onChange={handleSearch}
               value={search}
             />
-             <div className="text-xl flex items-center h-7 rounded-r-full px-3 md:px-5 cursor-pointer bg-blue-900 text-white py-2 ">
+            <div className="text-xl flex items-center h-7 rounded-r-full px-3 md:px-5 cursor-pointer bg-blue-900 text-white py-2 ">
               <GrSearch />
             </div>
           </div>
