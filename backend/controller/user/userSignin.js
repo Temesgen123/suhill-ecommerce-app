@@ -23,7 +23,7 @@ async function userSignInController(req, res) {
       });
       const tokenOption = {
         httpOnly: true,
-        secure: true,
+        // secure: true,
         sameSite: 'None',
         maxAge: 3600000,
       };
