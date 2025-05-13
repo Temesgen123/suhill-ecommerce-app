@@ -41,8 +41,8 @@ const Login = () => {
     const apiResponse = await responseData.json();
     if (apiResponse.success) {
       toast.success(apiResponse.message);
-      await fetchUserDetails();
-      await fetchUserCartItemsCount();
+      fetchUserDetails();
+      fetchUserCartItemsCount();
       navigate('/');
     }
     if (apiResponse.error) {

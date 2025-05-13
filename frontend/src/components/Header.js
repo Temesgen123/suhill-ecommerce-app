@@ -91,7 +91,7 @@ const Header = () => {
               <GrSearch />
             </div>
           </div>
-          <div className="flex items-center md:gap-7 gap-2 bg-red-500">
+          <div className="flex items-center md:gap-7 gap-2">
             <div
               className="relative flex justify-center"
               onClick={() => setMenuDisplay((prev) => !prev)}
