@@ -19,12 +19,12 @@ async function userSignInController(req, res) {
     if (checkedPassword) {
       const tokenData = { _id: user._id, email: user.email };
       const token = jwt.sign(tokenData, process.env.TOKEN_SECRET_KEY, {
-        // expiresIn: 60 * 60 * 8,
+        expiresIn: 60 * 60 * 8,
       });
       const tokenOption = {
         httpOnly: true,
         secure: true,
-        SameSite: 'None',
+        sameSite: 'None',
       };
       res.cookie('token', token, tokenOption).json({
         message: 'Logged in successfully.',
