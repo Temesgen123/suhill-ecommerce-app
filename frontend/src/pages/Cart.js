@@ -14,7 +14,7 @@ const Cart = () => {
   const loadingCart = new Array(context?.cartProductsCount).fill(null);
 
   const fetchCartData = async () => {
-    // setLoading(true);
+    setLoading(true);
     const response = await fetch(SummaryApi.addToCartProductView.url, {
       method: SummaryApi.addToCartProductView.method,
       credentials: 'include',
@@ -22,7 +22,7 @@ const Cart = () => {
         'content-type': 'application/json',
       },
     });
-    // setLoading(false);
+    setLoading(false);
     const responseData = await response.json();
     if (responseData?.success) {
       setData(responseData?.data);
@@ -88,14 +88,15 @@ const Cart = () => {
     await fetchCartData();
   };
   useEffect(() => {
-    setLoading(true);
-    handleLoading();
-    setLoading(false);
+    // setLoading(true);
+    // handleLoading();
+    // setLoading(false);
+    fetchCartData();
   }, []);
 
   const handlePayment = async () => {
     const stripePromise = await loadStripe(
-      process.env.REACT_APP_STRIPE_PUBLIC_KEY
+      process.env.REACT_APP_STRIPE_PUBLIC_KEY,
     );
     const response = await fetch(SummaryApi.payment.url, {
       method: SummaryApi.payment.method,
@@ -111,11 +112,11 @@ const Cart = () => {
 
   const totalQty = data.reduce(
     (previousValue, currentValue) => previousValue + currentValue?.quantity,
-    0
+    0,
   );
   const totalPrice = data.reduce(
     (prev, curr) => prev + curr?.quantity * curr?.productId?.sellingPrice,
-    0
+    0,
   );
 
   return (
