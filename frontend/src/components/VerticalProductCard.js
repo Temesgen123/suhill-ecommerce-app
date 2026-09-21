@@ -21,12 +21,17 @@ const VerticalProductCard = ({ category, heading }) => {
 
   const { fetchUserCartItemsCount } = useContext(Context);
 
-  const fetchData = useCallback(async () => {
+  const fetchData = async () => {
     setLoading(true);
-    const categoryProduct = await fetchProductCategoryWise(category);
-    setData(categoryProduct?.data);
-    setLoading(false);
-  }, [category]);
+    try {
+      const categoryProduct = await fetchProductCategoryWise(category);
+      setData(categoryProduct?.data || []);
+    } catch (error) {
+      console.error('Error fetching category products:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleAddToCart = async (e, id) => {
     addToCart(e, id);
@@ -36,7 +41,7 @@ const VerticalProductCard = ({ category, heading }) => {
 
   useEffect(() => {
     fetchData();
-  }, [fetchData]);
+  }, [category]);
 
   const scrollRight = () => {
     scrollElement.current.scrollLeft += 300;
