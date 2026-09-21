@@ -1,12 +1,4 @@
-//Horizontal Product Card
-
-import React, {
-  useContext,
-  useEffect,
-  useRef,
-  useState,
-  useCallback,
-} from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react'; // Removed useCallback
 import fetchProductCategoryWise from '../helpers/fetchProductcategoryWise';
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
@@ -19,31 +11,24 @@ const HorizontalProductCard = ({ category, heading }) => {
   const loadingList = new Array(12).fill(null);
 
   const scrollElement = useRef();
-
   const { fetchUserCartItemsCount } = useContext(Context);
 
-  const fetchData = async () => {
-    setLoading(true);
-    try {
-      const categoryProduct = await fetchProductCategoryWise(category);
-      setData(categoryProduct?.data || []);
-    } catch (error) {
-      console.error('Error fetching category products:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleAddToCart = async (e, id) => {
-    addToCart(e, id);
-    fetchData();
-    fetchUserCartItemsCount();
-    setLoading(false);
-  };
-
+  // Move fetchData inside useEffect
   useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      const categoryProduct = await fetchProductCategoryWise(category);
+      setData(categoryProduct?.data);
+      setLoading(false);
+    };
+
     fetchData();
   }, [category]);
+
+  const handleAddToCart = async (e, id) => {
+    await addToCart(e, id);
+    fetchUserCartItemsCount();
+  };
 
   const scrollRight = () => {
     scrollElement.current.scrollLeft += 300;
