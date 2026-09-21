@@ -12,7 +12,7 @@ const AdminPanel = () => {
     if (user?.role !== ROLE.ADMIN) {
       navigate('/');
     }
-  }, [user]);
+  }, [user, navigate]);
   return (
     <div className="min-h-[calc(100vh-150px)] md:flex hidden mt-12 ">
       <aside className="min-h-full w-full max-w-60 asideCustomShadow">

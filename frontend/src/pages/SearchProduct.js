@@ -1,6 +1,6 @@
 // Search Product Page
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
 import SummaryApi from '../common';
 import VerticalSearchResultCard from '../components/VerticalSearchResultCard';
@@ -13,7 +13,7 @@ const SearchProduct = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const fetchProduct = async () => {
+  const fetchProduct = useCallback(async () => {
     setLoading(true);
     const response = await fetch(SummaryApi.searchProduct.url + queryString, {
       method: SummaryApi.searchProduct.method,
@@ -21,22 +21,27 @@ const SearchProduct = () => {
     const responseData = await response.json();
     setLoading(false);
     setData(responseData?.data);
-  };
+  }, [queryString]);
+
   useEffect(() => {
     fetchProduct();
-  }, [locationObject]);
+  }, [fetchProduct]);
+
   return (
     <div className="container mx-auto md:p-10 pt-12 pb-2 px-3">
       {loading && <p className="text-lg text-center">Loading...</p>}
-      <p className='md:text-xl text-md font-semibold my-3 '> Search results for <span className='text-red-600 font-bold'>{ }"{queryTerm}"</span>:  {data.length} {} items.</p>
+      <p className="md:text-xl text-md font-semibold my-3 ">
+        {' '}
+        Search results for{' '}
+        <span className="text-red-600 font-bold">"{queryTerm}"</span>:{' '}
+        {data.length} items.
+      </p>
       {data.length === 0 && !loading && (
         <p className="text-lg text-center bg-white">No Product Found.</p>
       )}
-      {
-        data.length !== 0 && !loading && (        
-            <VerticalSearchResultCard loading = {loading} data = {data} />                 
-        )
-      }
+      {data.length !== 0 && !loading && (
+        <VerticalSearchResultCard loading={loading} data={data} />
+      )}
     </div>
   );
 };

@@ -1,6 +1,6 @@
 //Category Product
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import productCategory from '../helpers/productCategory';
 import SummaryApi from '../common';
@@ -22,14 +22,14 @@ function CategoryProduct() {
   });
 
   const [selectedCategory, setSelectedCategory] = useState(
-    categoryUrlListObject
+    categoryUrlListObject,
   );
 
   const [filteredCategoryList, setFilteredCategoryList] =
     useState(categoryUrlListArray);
   const [sortBy, setSortBy] = useState('');
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     const response = await fetch(SummaryApi.filterProduct.url, {
       method: SummaryApi.filterProduct.method,
       headers: {
@@ -40,9 +40,10 @@ function CategoryProduct() {
     const responseData = await response?.json();
     setData(responseData?.data || []);
     setLoading(false);
-  };
+  }, [filteredCategoryList]);
+
   const handleSelectedCategory = (e) => {
-    const { name, value, checked } = e.target;
+    const { value, checked } = e.target;
     setSelectedCategory((prev) => {
       return { ...prev, [value]: checked };
     });
@@ -84,7 +85,7 @@ function CategoryProduct() {
   // useEffect(() => { }, [sortBy]);
   useEffect(() => {
     fetchData();
-  }, [filteredCategoryList]);
+  }, [fetchData]);
 
   return (
     <div className="container mx-auto p-4 pt-12">
