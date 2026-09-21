@@ -84,9 +84,9 @@ const Cart = () => {
       setLoading(false);
     }
   };
-  const handleLoading = async () => {
-    await fetchCartData();
-  };
+  // const handleLoading = async () => {
+  //   await fetchCartData();
+  // };
   useEffect(() => {
     // setLoading(true);
     // handleLoading();
