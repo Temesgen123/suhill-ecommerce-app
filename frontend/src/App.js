@@ -24,7 +24,8 @@ function App() {
     if (apiData.success) {
       dispatch(setUserDetails(apiData.data));
     }
-  }, []);
+  }, [dispatch]); // Added dispatch here
+
   const fetchUserCartItemsCount = async () => {
     const apiResponse = await fetch(SummaryApi.addToCartProductCount.url, {
       method: SummaryApi.addToCartProductCount.method,

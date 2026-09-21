@@ -19,9 +19,10 @@ const AdminEditProduct = ({ onClose, productData, fetchData }) => {
     price: productData?.price,
     sellingPrice: productData?.sellingPrice,
   });
-  const [uploadProductImageInput, setUploadProductImageInput] = useState('');
+
   const [openFullScreenImage, setOpenFullScreenImage] = useState(false);
   const [fullScreenImage, setFullScreenImage] = useState('');
+
   const handleOnChange = (e) => {
     const { name, value } = e.target;
     setData((prev) => {
@@ -31,9 +32,9 @@ const AdminEditProduct = ({ onClose, productData, fetchData }) => {
       };
     });
   };
+
   const handleUploadProduct = async (e) => {
     const file = e.target.files[0];
-    setUploadProductImageInput(file.name);
     console.log('File : ', file);
     const uploadedImageToCloudinary = await uploadImage(file);
     setData((prev) => {
@@ -44,6 +45,7 @@ const AdminEditProduct = ({ onClose, productData, fetchData }) => {
     });
     console.log('Uploaded image : ', uploadedImageToCloudinary);
   };
+
   const handleDeleteProductImage = async (index) => {
     const newProductImage = [...data.productImage];
     newProductImage.splice(index, 1);
@@ -54,6 +56,7 @@ const AdminEditProduct = ({ onClose, productData, fetchData }) => {
       };
     });
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const fetchedResponse = await fetch(SummaryApi.updateProduct.url, {
@@ -74,6 +77,7 @@ const AdminEditProduct = ({ onClose, productData, fetchData }) => {
       toast.error(responseData?.message);
     }
   };
+
   return (
     <div className="fixed top-0 bottom-0 left-0 right-0 bg-slate-600 bg-opacity-10">
       <div className=" fixed w-full h-full top-0 bottom-0 left-0 right-0 flex justify-center items-center bg-slate-200 bg-opacity-40 ">
@@ -232,7 +236,7 @@ const AdminEditProduct = ({ onClose, productData, fetchData }) => {
             </button>
           </form>
         </div>
-        {/* Dispaly image full screen. */}
+        {/* Display image full screen. */}
         {openFullScreenImage && (
           <DisplayImageFullSize
             onClose={() => setOpenFullScreenImage(false)}

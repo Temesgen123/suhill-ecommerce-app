@@ -1,6 +1,12 @@
 //Horizontal Product Card
 
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, {
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+  useCallback,
+} from 'react';
 import fetchProductCategoryWise from '../helpers/fetchProductcategoryWise';
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
@@ -16,13 +22,13 @@ const HorizontalProductCard = ({ category, heading }) => {
 
   const { fetchUserCartItemsCount } = useContext(Context);
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     setLoading(true);
     const categoryProduct = await fetchProductCategoryWise(category);
     setData(categoryProduct?.data);
     setLoading(false);
     fetchUserCartItemsCount();
-  };
+  }, [category, fetchUserCartItemsCount]);
 
   const handleAddToCart = async (e, id) => {
     addToCart(e, id);
@@ -33,8 +39,7 @@ const HorizontalProductCard = ({ category, heading }) => {
 
   useEffect(() => {
     fetchData();
-    setLoading(false);
-  }, []);
+  }, [fetchData]);
 
   const scrollRight = () => {
     scrollElement.current.scrollLeft += 300;

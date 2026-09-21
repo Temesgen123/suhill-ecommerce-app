@@ -1,6 +1,6 @@
 //Product Display Category
 
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState, useCallback } from 'react';
 import fetchProductCategoryWise from '../helpers/fetchProductcategoryWise';
 import addToCart from '../helpers/addToCart';
 import { Link } from 'react-router-dom';
@@ -11,21 +11,23 @@ const ProductDispalyInCategory = ({ category, heading }) => {
   const [loading, setLoading] = useState(false);
   const loadingList = new Array(12).fill(null);
 
+  const { fetchUserCartItemsCount } = useContext(Context);
+
   const handleAddToCart = async (e, id) => {
     await addToCart(e, id);
     await fetchUserCartItemsCount();
   };
-  const { fetchUserCartItemsCount } = useContext(Context);
-  const fetchData = async () => {
+
+  const fetchData = useCallback(async () => {
     setLoading(true);
     const categoryProduct = await fetchProductCategoryWise(category);
     setLoading(false);
     setData(categoryProduct?.data);
-  };
+  }, [category]);
+
   useEffect(() => {
     fetchData();
-    setLoading(false);
-  }, []);
+  }, [fetchData]);
 
   return (
     <div className="container mx-auto px-4 my-6 relative ">
@@ -38,13 +40,7 @@ const ProductDispalyInCategory = ({ category, heading }) => {
                   key={index}
                   className="w-full min-w-[280px] md:min-w-[320px]   max-w-[280px] md:max-w-[320px] h-36 bg-white rounded-sm shadow flex"
                 >
-                  <div className="bg-slate-200 h-full p-4 min-w-[120px] md:min-w-[145px] animate-pulse">
-                    {/* <img
-                    src={product.productImage[0]}
-                    alt=""
-                    className="object-s cale-down h-full hover:scale-150 transition-all"
-                  /> */}
-                  </div>
+                  <div className="bg-slate-200 h-full p-4 min-w-[120px] md:min-w-[145px] animate-pulse"></div>
                   <div className="p-4 grid w-full gap-2">
                     <h2 className="font-medium text-base md:text-lg text-ellipsis line-clamp-1 text-black bg-slate-200 animate-pulse p-1 rounded-full">
                       {''}
@@ -69,7 +65,7 @@ const ProductDispalyInCategory = ({ category, heading }) => {
                   <div className="bg-slate-200 h-full p-4 min-w-[120px] md:min-w-[145px]">
                     <img
                       src={product.productImage[0]}
-                      alt=""                      
+                      alt=""
                       className="object-scale-down h-full hover:scale-110  transition-all mix-blend-multiply"
                     />
                   </div>
@@ -82,10 +78,10 @@ const ProductDispalyInCategory = ({ category, heading }) => {
                     </p>
                     <div className="flex gap-3 text-xs">
                       <p className="font-medium text-red-600">{`EBT ${(product?.sellingPrice).toFixed(
-                        2
+                        2,
                       )}`}</p>
                       <p className="text-slate-500 line-through">{`EBT ${(product?.price).toFixed(
-                        2
+                        2,
                       )}`}</p>
                     </div>
                     <button

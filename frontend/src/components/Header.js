@@ -59,7 +59,7 @@ const Header = () => {
 
   useEffect(() => {
     fetchUserCartItemsCount();
-  }, [cartProductsCount]);
+  }, [cartProductsCount, fetchUserCartItemsCount]);
 
   return (
     <header className=" md:h-24 h-28 shadow-md fixed w-full z-40 px-5 md:px-0 mx-auto">

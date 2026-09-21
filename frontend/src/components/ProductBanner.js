@@ -1,5 +1,5 @@
 //Product Banner
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 
 import image1 from '../asset/banner/banner-medium01.png';
 import image2 from '../asset/banner/banner-medium02.png';
@@ -16,20 +16,22 @@ import image5Mobile from '../asset/banner/banner-mobile05.png';
 import { FaAngleRight } from 'react-icons/fa6';
 import { FaAngleLeft } from 'react-icons/fa6';
 
+const desktopImages = [image1, image2, image3, image4, image5];
+const mobileImages = [
+  image1Mobile,
+  image2Mobile,
+  image3Mobile,
+  image4Mobile,
+  image5Mobile,
+];
+
 const ProductBanner = () => {
-  const desktopImages = [image1, image2, image3, image4, image5];
-  const mobileImages = [
-    image1Mobile,
-    image2Mobile,
-    image3Mobile,
-    image4Mobile,
-    image5Mobile,
-  ];
-  const nextImage = () => {
-    if (desktopImages.length - 1 > currentImage) {
-      setCurrentImage((prev) => prev + 1);
-    }
-  };
+  const [currentImage, setCurrentImage] = useState(0);
+
+  const nextImage = useCallback(() => {
+    setCurrentImage((prev) => (prev < desktopImages.length - 1 ? prev + 1 : 0));
+  }, []);
+
   const preveousImage = () => {
     if (currentImage !== 0) {
       setCurrentImage((prev) => {
@@ -37,18 +39,14 @@ const ProductBanner = () => {
       });
     }
   };
-  const [currentImage, setCurrentImage] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      if (desktopImages.length - 1 > currentImage) {
-        nextImage();
-      } else {
-        setCurrentImage((prev) => 0);
-      }
+      nextImage();
     }, 5000);
     return () => clearInterval(interval);
-  }, [currentImage]);
+  }, [nextImage]);
+
   return (
     <div className="container px-4 mx-auto rounded overflow-hidden p-2">
       <div className=" h-60 md:h-80 w-full  relative">
@@ -70,7 +68,7 @@ const ProductBanner = () => {
         </div>
         {/* Desktop and tablet version */}
         <div className="w-full h-full hidden md:flex overflow-hidden">
-          {desktopImages.map((imageUrl, index) => {
+          {desktopImages.map((imageUrl) => {
             return (
               <div
                 key={imageUrl}
@@ -85,7 +83,7 @@ const ProductBanner = () => {
 
         {/* Mobile version */}
         <div className="w-full h-full flex overflow-hidden md:hidden">
-          {mobileImages.map((imageUrl, index) => {
+          {mobileImages.map((imageUrl) => {
             return (
               <div
                 key={imageUrl}

@@ -8,7 +8,7 @@ import { MdDelete } from 'react-icons/md';
 import SummaryApi from '../common';
 import { toast } from 'react-toastify';
 
-const UploadProduct = ({ onClose, fetchAllProduct}) => {
+const UploadProduct = ({ onClose, fetchAllProduct }) => {
   const [data, setData] = useState({
     productName: '',
     brandName: '',
@@ -18,9 +18,10 @@ const UploadProduct = ({ onClose, fetchAllProduct}) => {
     price: '',
     sellingPrice: '',
   });
-  const [uploadProductImageInput, setUploadProductImageInput] = useState('');
+
   const [openFullScreenImage, setOpenFullScreenImage] = useState(false);
   const [fullScreenImage, setFullScreenImage] = useState('');
+
   const handleOnChange = (e) => {
     const { name, value } = e.target;
     setData((prev) => {
@@ -30,9 +31,9 @@ const UploadProduct = ({ onClose, fetchAllProduct}) => {
       };
     });
   };
+
   const handleUploadProduct = async (e) => {
     const file = e.target.files[0];
-    setUploadProductImageInput(file.name);
     console.log('File : ', file);
     const uploadedImageToCloudinary = await uploadImage(file);
     setData((prev) => {
@@ -43,6 +44,7 @@ const UploadProduct = ({ onClose, fetchAllProduct}) => {
     });
     console.log('Uploaded image : ', uploadedImageToCloudinary);
   };
+
   const handleDeleteProductImage = async (index) => {
     const newProductImage = [...data.productImage];
     newProductImage.splice(index, 1);
@@ -53,6 +55,7 @@ const UploadProduct = ({ onClose, fetchAllProduct}) => {
       };
     });
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const fetchedResponse = await fetch(SummaryApi.uploadProduct.url, {
@@ -67,12 +70,13 @@ const UploadProduct = ({ onClose, fetchAllProduct}) => {
     if (responseData.success) {
       toast.success(responseData?.message);
       fetchAllProduct();
-      onClose();    
+      onClose();
     }
     if (responseData.error) {
       toast.error(responseData?.message);
     }
   };
+
   return (
     <div className=" fixed w-full h-full top-0 bottom-0 left-0 right-0 flex justify-center items-center bg-slate-200 bg-opacity-40 ">
       <div className="bg-white p-4 rounded w-full max-w-2xl h-full max-h-[80%] overflow-hidden">
@@ -230,7 +234,7 @@ const UploadProduct = ({ onClose, fetchAllProduct}) => {
           </button>
         </form>
       </div>
-      {/* Dispaly image full screen. */}
+      {/* Display image full screen. */}
       {openFullScreenImage && (
         <DisplayImageFullSize
           onClose={() => setOpenFullScreenImage(false)}
