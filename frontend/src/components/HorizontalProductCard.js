@@ -17,9 +17,19 @@ const HorizontalProductCard = ({ category, heading }) => {
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
-      const categoryProduct = await fetchProductCategoryWise(category);
-      setData(categoryProduct?.data);
-      setLoading(false);
+      try {
+        const categoryProduct = await fetchProductCategoryWise(category);
+        setData(categoryProduct?.data || []);
+      } catch (error) {
+        console.error(
+          'Failed to fetch products for category:',
+          category,
+          error,
+        );
+        setData([]);
+      } finally {
+        setLoading(false); // Ensures loading stops even if the API fails
+      }
     };
 
     fetchData();
