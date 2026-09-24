@@ -21,10 +21,15 @@ async function userSignInController(req, res) {
       const token = jwt.sign(tokenData, process.env.TOKEN_SECRET_KEY, {
         // expiresIn: 60 * 60 * 8,
       });
+      // const tokenOption = {
+      //   httpOnly: true,
+      //   secure: true,
+      //   SameSite: 'None',
+      // };
       const tokenOption = {
         httpOnly: true,
-        secure: true,
-        SameSite: 'None',
+        secure: true, // Required for HTTPS on Vercel
+        sameSite: 'none', // Must be lowercase 'sameSite'
       };
       res.cookie('token', token, tokenOption).json({
         message: 'Logged in successfully.',
